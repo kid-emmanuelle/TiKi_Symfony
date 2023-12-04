@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fibonacci{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        data:hover::after {
+            content: ' (NB ' attr(value) ')';
+            font-size: 0.7em;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h1>Fibonacci {{ nb }}</h1>
+
+    <ul>
+        {% for key, nbFibonacci in listeFibonacci %}
+            <li>
+                <data value="{{ key }}"><samp>{{ nbFibonacci }}</samp></data>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

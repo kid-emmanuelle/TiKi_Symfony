@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Index Student{% endblock %}
+
+{% block body %}
+    <h1>Index Student</h1>
+
+    <h2>NB Student - {{ students|length }}</h2>
+
+    <a href="/student/new">New student</a>
+
+    <div>
+        {% for student in students %}
+            {% if loop.first %}
+                <ul>
+            {% endif %}
+            <li>
+                <a href="/student/{{ student.id }}">{{ student.id }} - {{ student.name }}</a>
+                <a href="/student/{{ student.id }}/edit">Edit</a>
+                <a href="/student/{{ student.id }}/delete">Delete</a>
+            </li>
+            {% if loop.last %}
+                </ul>
+            {% endif %}
+        {% else %}
+            <b>There are no students</b>
+        {% endfor %}
+    </div>
+{% endblock %}

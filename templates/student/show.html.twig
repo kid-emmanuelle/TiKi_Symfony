@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Show Student - {{ student.id }}{% endblock %}
+
+{% block body %}
+    <h1>Show Student - {{ student.id }}</h1>
+
+    <p>Name : <var>{{ student.name }}</var></p>
+    <p>Firstname : <var>{{ student.firstname }}</var></p>
+    <p>Old : <var>{{ student.old }}</var></p>
+{% endblock %}
