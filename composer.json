@@ -1,6 +1,6 @@
 {
   "require": {
-    "php": ">=8.1",
+    "php": ">=8.2",
     "symfony/http-foundation": "^6.3",
     "symfony/routing": "^6.3",
     "twig/twig": "^3.8",
