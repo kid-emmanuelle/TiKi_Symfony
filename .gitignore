@@ -1,3 +1,5 @@
 .idea
 vendor
 /db.sqlite
+composer.lock
+
