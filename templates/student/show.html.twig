@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Show Student - {{ student.id }}{% endblock %}
+{% block title %}Show Student - {{ book.id }}{% endblock %}
 
 {% block body %}
-    <h1>Show Student - {{ student.id }}</h1>
+    <h1>Show Book - {{ book.id }}</h1>
 
-    <p>Name : <var>{{ student.name }}</var></p>
-    <p>Firstname : <var>{{ student.firstname }}</var></p>
-    <p>Old : <var>{{ student.old }}</var></p>
+    <p>Title : <var>{{ book.title }}</var></p>
+    <p>Description : <var>{{ book.description }}</var></p>
+    <p>Price : <var>{{ book.price }}</var></p>
 {% endblock %}

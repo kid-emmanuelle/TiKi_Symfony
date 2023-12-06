@@ -1,29 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Index Student{% endblock %}
+{% block title %}Index Book{% endblock %}
 
 {% block body %}
-    <h1>Index Student</h1>
+    <h1>Index Book</h1>
 
-    <h2>NB Student - {{ students|length }}</h2>
+    <h2>NB Book - {{ books|length }}</h2>
 
-    <a href="/student/new">New student</a>
+    <a href="/student/new">New Book</a>
 
     <div>
-        {% for student in students %}
+        {% for book in books %}
             {% if loop.first %}
                 <ul>
             {% endif %}
             <li>
-                <a href="/student/{{ student.id }}">{{ student.id }} - {{ student.name }}</a>
-                <a href="/student/{{ student.id }}/edit">Edit</a>
-                <a href="/student/{{ student.id }}/delete">Delete</a>
+                <a href="/student/{{ book.id }}">{{ book.id }} - {{ book.title }}</a>
+                <a href="/student/{{ book.id }}/edit">Edit</a>
+                <a href="/student/{{ book.id }}/delete">Delete</a>
             </li>
             {% if loop.last %}
                 </ul>
             {% endif %}
         {% else %}
-            <b>There are no students</b>
+            <b>There are no books</b>
         {% endfor %}
     </div>
 {% endblock %}

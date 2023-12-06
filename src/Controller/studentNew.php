@@ -7,26 +7,30 @@
  * @var ValidatorInterface $validator
  */
 
-use Entity\Student;
+use Entity\Book;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-$studentRepository = $entityManager->getRepository(Student::class);
+$studentRepository = $entityManager->getRepository(Book::class);
 
 $arrayViolations = [];
 
 if (Request::METHOD_POST == $request->getMethod()) {
-    $student = (new Student())
-        ->setName($request->get('name'))
-        ->setFirstname($request->get('firstname'))
-        ->setOld($request->get('old'));
+    $book = (new Book())
+        ->setId($request->get('id'))
+        ->setTitle($request->get('title'))
+        ->setDescription($request->get('description'))
+        ->setImage($request->get('images'))
+        ->setFormat($request->get('format'))
+        ->setPrice($request->get('price'))
+        ->setReviews($request->get('reviews'));
 
-    $violations = $validator->validate($student);
+    $violations = $validator->validate($book);
 
     if ($violations->count() == 0) {
-        $entityManager->persist($student);
+        $entityManager->persist($book);
         $entityManager->flush();
 
         return new RedirectResponse('/student');

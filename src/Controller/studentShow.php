@@ -6,10 +6,10 @@
  * @var int $id
  */
 
-use Entity\Student;
+use Entity\Book;
 use Symfony\Component\HttpFoundation\Response;
 
-$studentRepository = $entityManager->getRepository(Student::class);
-$student = $studentRepository->find($id);
+$studentRepository = $entityManager->getRepository(Book::class);
+$book = $studentRepository->find($id);
 
-return new Response($twig->render('student/show.html.twig', ['student' => $student]));
+return new Response($twig->render('student/show.html.twig', ['book' => $book]));

@@ -5,10 +5,10 @@
  * @var Doctrine\ORM\EntityManager $entityManager
  */
 
-use Entity\Student;
+use Entity\Book;
 use Symfony\Component\HttpFoundation\Response;
 
-$studentRepository = $entityManager->getRepository(Student::class);
-$students = $studentRepository->findAll();
+$bookRepository = $entityManager->getRepository(Book::class);
+$books = $bookRepository->findAll();
 
-return new Response($twig->render('student/index.html.twig', ['students' => $students]));
+return new Response($twig->render('student/index.html.twig', ['books' => $books]));
