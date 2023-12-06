@@ -15,25 +15,12 @@ services:
         volumes:
             - .:/application
             - ./docker/php/custom.ini:/usr/local/etc/php/conf.d/custom.ini
-        depends_on:
-            - redis
         environment:
             - DB_PORT=3306
             - DB_HOST=db
             - DB_USERNAME=root
             - DB_PASS=secret
             - DB_NAME=app_db
-
-    redis:
-        image: redis:5.0.6-alpine
-        ports:
-            - "6382:6379"
-
-    phpmyadmin:
-        image: phpmyadmin
-        ports:
-            - 8082:80
-
 
 volumes:
     db_data:
