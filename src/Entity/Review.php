@@ -35,5 +35,64 @@ class Review
     #[ORM\ManyToOne(targetEntity: Book::class, inversedBy: 'book')]
     private Book $book;
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function setId(?int $id): Review
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    public function getText(): string
+    {
+        return $this->text;
+    }
+
+    public function setText(string $text): Review
+    {
+        $this->text = $text;
+        return $this;
+    }
+
+    public function getStar(): string
+    {
+        return $this->star;
+    }
+
+    public function setStar(string $star): Review
+    {
+        $this->star = $star;
+        return $this;
+    }
+
+    public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    public function setUser(User $user): Review
+    {
+        $this->user = $user;
+        return $this;
+    }
+
+    public function getBook(): Book
+    {
+        return $this->book;
+    }
+
+    public function setBook(Book $book): Review
+    {
+        $this->book = $book;
+        return $this;
+    }
+
+
+
+
+
 
 }
