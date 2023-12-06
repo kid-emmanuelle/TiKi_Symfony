@@ -37,8 +37,8 @@ try {
     $response = require dirname(__DIR__) . '/src/Controller/' . $_route . '.php';
 } catch (ResourceNotFoundException $exception) {
     $response = new Response('The requested page doesn\'t exist', Response::HTTP_NOT_FOUND);
-} catch (Throwable $throwable) {
+} /*catch (Throwable $throwable) {
     $response = new Response('An error has occurred', Response::HTTP_INTERNAL_SERVER_ERROR);
-}
+}*/
 
 $response->send();

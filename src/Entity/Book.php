@@ -112,14 +112,14 @@ class Book
         return $this;
     }
 
-    public function getImage(): Collection
+    public function getImages(): Collection
     {
         return $this->images;
     }
 
-    public function setImage(Collection $image): Book
+    public function setImages(Collection $images): Book
     {
-        $this->images = $image;
+        $this->images = $images;
         return $this;
     }
 

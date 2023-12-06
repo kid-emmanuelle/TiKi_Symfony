@@ -23,6 +23,41 @@ class Image
     #[ORM\ManyToOne(targetEntity: Book::class, inversedBy: 'book')]
     private Book $book;
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function setId(?int $id): Image
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    public function getLink(): string
+    {
+        return $this->link;
+    }
+
+    public function setLink(string $link): Image
+    {
+        $this->link = $link;
+        return $this;
+    }
+
+    public function getBook(): Book
+    {
+        return $this->book;
+    }
+
+    public function setBook(Book $book): Image
+    {
+        $this->book = $book;
+        return $this;
+    }
+
+
+
 
 
 
