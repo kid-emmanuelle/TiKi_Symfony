@@ -7,9 +7,11 @@
  */
 
 use Entity\Book;
+use Entity\Image;
+use Entity\Review;
 use Symfony\Component\HttpFoundation\Response;
 
-$studentRepository = $entityManager->getRepository(Book::class);
-$book = $studentRepository->find($id);
+$bookRepository = $entityManager->getRepository(Book::class);
+$book = $bookRepository->find($id);
 
 return new Response($twig->render('student/show.html.twig', ['book' => $book]));
