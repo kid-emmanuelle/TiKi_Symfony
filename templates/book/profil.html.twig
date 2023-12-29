@@ -4,7 +4,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link href="\asset\CSS\bookProfil.css" rel="stylesheet">
+    <link href="\asset\css\bookProfil.css" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
@@ -16,8 +16,7 @@
                         <img id="main-image" class="img-thumbnail" src="{{ image.link }}">
                         <br>
                     {% endif %}
-                    <img class="img-thumbnail img-small" src="{{ image.link }}" data-link="{{ image.link|raw }}"
-                         onclick="selectImg(this)">
+                    <img class="img-thumbnail img-small" src="{{ image.link }}" data-link="{{ image.link|raw }}" onclick="selectImg(this)">
                     {% if loop.last %}
                     {% endif %}
                 {% else %}
@@ -92,7 +91,7 @@
 
     </div>
 
-    <script src="\asset\JS\bookProfil.js"></script>
+    <script src="\asset\js\bookProfil.js"></script>
 
 {% endblock %}
 

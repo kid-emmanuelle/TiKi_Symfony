@@ -33,8 +33,8 @@ INSERT INTO user(id, name, firstname, mail, password) VALUES(4,'Bidden','Joe','j
 INSERT INTO user(id, name, firstname, mail, password) VALUES(5,'Salman','Ben','ben.salman@gmail.com','$2y$10$mVjS8BM2AYOED88WsbwMsuZ6.aqWnqqRhWD3g5PlCGKGxZ8d2cH.i');
 
 -- Review
-INSERT INTO review(id, user_id, book_id, text, star) VALUES(1,1,1,'Thank you to the publishers for this early review copy. I knew straight away this was going to appeal to me but I admit like too many other books it had hu.',5)
-INSERT INTO review(id, user_id, book_id, text, star) VALUES(2,2,1,'If it wasn''t for the Booker Prize I would probably not have read this - and I so pleased I have. So far my absolute front runner for winning the Booker 202...',5)
+INSERT INTO review(id, user_id, book_id, text, star) VALUES(1,1,1,'Thank you to the publishers for this early review copy. I knew straight away this was going to appeal to me but I admit like too many other books it had hu.',5);
+INSERT INTO review(id, user_id, book_id, text, star) VALUES(2,2,1,'If it wasn''t for the Booker Prize I would probably not have read this - and I so pleased I have. So far my absolute front runner for winning the Booker 202...',5);
 INSERT INTO review(id, user_id, book_id, text, star) VALUES(3,3,2,'I truly enjoyed solving the puzzles in this book and I like how as you solve it you earned snippets of the story with each solve. However before I purchase.',5);
 INSERT INTO review(id, user_id, book_id, text, star) VALUES(4,4,2,'A fantastic puzzle book that you can quickly become absorbed in. Each puzzle connect and winds into this gander story arc that upon finishing the puzzles y..',5);
 INSERT INTO review(id, user_id, book_id, text, star) VALUES(5,5,2,'This is amazing, I am so obsessed. Such a great way to solve murders through a puzzle :',5);
@@ -51,35 +51,35 @@ INSERT INTO review(id, user_id, book_id, text, star) VALUES(15,3,11,'Loved the f
 INSERT INTO review(id, user_id, book_id, text, star) VALUES(16,4,1,'Delightful story, pure Bob Mortimer, to the point that you can hear him narrating. Made me laugh o',5);
 
 -- Image
-INSERT INTO image(book_id, link) VALUES(1,'\asset\IMG\livre1.jpg');
-INSERT INTO image(book_id, link) VALUES(2,'\asset\IMG\image3.jpeg');
-INSERT INTO image(book_id, link) VALUES(2,'\asset\IMG\image3.2.jpeg');
-INSERT INTO image(book_id, link) VALUES(2,'\asset\IMG\image3.3.jpeg');
-INSERT INTO image(book_id, link) VALUES(2,'\asset\IMG\image3.4.jpeg');
-INSERT INTO image(book_id, link) VALUES(3,'\asset\IMG\livre3.jpg');
-INSERT INTO image(book_id, link) VALUES(4,'\asset\IMG\image4.webp');
-INSERT INTO image(book_id, link) VALUES(4,'\asset\IMG\image4.2.jpeg');
-INSERT INTO image(book_id, link) VALUES(4,'\asset\IMG\image4.3.jpeg');
-INSERT INTO image(book_id, link) VALUES(4,'\asset\IMG\image4.4.jpeg');
-INSERT INTO image(book_id, link) VALUES(4,'\asset\IMG\image4.5.jpeg');
-INSERT INTO image(book_id, link) VALUES(5,'\asset\IMG\image5.jpg');
-INSERT INTO image(book_id, link) VALUES(6,'\asset\IMG\image6.jpg');
-INSERT INTO image(book_id, link) VALUES(7,'\asset\IMG\image7.webp');
-INSERT INTO image(book_id, link) VALUES(8,'\asset\IMG\image8.jpg');
-INSERT INTO image(book_id, link) VALUES(9,'\asset\IMG\image9.jpg');
-INSERT INTO image(book_id, link) VALUES(10,'\asset\IMG\image10.jpg');
-INSERT INTO image(book_id, link) VALUES(11,'\asset\IMG\image11.webp');
-INSERT INTO image(book_id, link) VALUES(12,'\asset\IMG\image12.jpg');
-INSERT INTO image(book_id, link) VALUES(13,'\asset\IMG\image13.webp');
-INSERT INTO image(book_id, link) VALUES(14,'\asset\IMG\image14.jpg');
-INSERT INTO image(book_id, link) VALUES(15,'\asset\IMG\image15.jpg');
-INSERT INTO image(book_id, link) VALUES(15,'\asset\IMG\image15.2.jpeg');
-INSERT INTO image(book_id, link) VALUES(15,'\asset\IMG\image15.3.jpeg');
-INSERT INTO image(book_id, link) VALUES(15,'\asset\IMG\image15.4.jpeg');
-INSERT INTO image(book_id, link) VALUES(15,'\asset\IMG\image15.5.jpeg');
-INSERT INTO image(book_id, link) VALUES(15,'\asset\IMG\image15.6.jpeg');
-INSERT INTO image(book_id, link) VALUES(16,'\asset\IMG\image16.jpg');
-INSERT INTO image(book_id, link) VALUES(17,'\asset\IMG\image17.webp');
-INSERT INTO image(book_id, link) VALUES(18,'\asset\IMG\image18.webp');
-INSERT INTO image(book_id, link) VALUES(19,'\asset\IMG\image19.jpg');
-INSERT INTO image(book_id, link) VALUES(20,'\asset\IMG\image20.jpg');
+INSERT INTO image(book_id, link) VALUES(1,'\asset\img\livre1.jpg');
+INSERT INTO image(book_id, link) VALUES(2,'\asset\img\image3.jpeg');
+INSERT INTO image(book_id, link) VALUES(2,'\asset\img\image3.2.jpeg');
+INSERT INTO image(book_id, link) VALUES(2,'\asset\img\image3.3.jpeg');
+INSERT INTO image(book_id, link) VALUES(2,'\asset\img\image3.4.jpeg');
+INSERT INTO image(book_id, link) VALUES(3,'\asset\img\livre3.jpg');
+INSERT INTO image(book_id, link) VALUES(4,'\asset\img\image4.webp');
+INSERT INTO image(book_id, link) VALUES(4,'\asset\img\image4.2.jpeg');
+INSERT INTO image(book_id, link) VALUES(4,'\asset\img\image4.3.jpeg');
+INSERT INTO image(book_id, link) VALUES(4,'\asset\img\image4.4.jpeg');
+INSERT INTO image(book_id, link) VALUES(4,'\asset\img\image4.5.jpeg');
+INSERT INTO image(book_id, link) VALUES(5,'\asset\img\image5.jpg');
+INSERT INTO image(book_id, link) VALUES(6,'\asset\img\image6.jpg');
+INSERT INTO image(book_id, link) VALUES(7,'\asset\img\image7.webp');
+INSERT INTO image(book_id, link) VALUES(8,'\asset\img\image8.jpg');
+INSERT INTO image(book_id, link) VALUES(9,'\asset\img\image9.jpg');
+INSERT INTO image(book_id, link) VALUES(10,'\asset\img\image10.jpg');
+INSERT INTO image(book_id, link) VALUES(11,'\asset\img\image11.webp');
+INSERT INTO image(book_id, link) VALUES(12,'\asset\img\image12.jpg');
+INSERT INTO image(book_id, link) VALUES(13,'\asset\img\image13.webp');
+INSERT INTO image(book_id, link) VALUES(14,'\asset\img\image14.jpg');
+INSERT INTO image(book_id, link) VALUES(15,'\asset\img\image15.jpg');
+INSERT INTO image(book_id, link) VALUES(15,'\asset\img\image15.2.jpeg');
+INSERT INTO image(book_id, link) VALUES(15,'\asset\img\image15.3.jpeg');
+INSERT INTO image(book_id, link) VALUES(15,'\asset\img\image15.4.jpeg');
+INSERT INTO image(book_id, link) VALUES(15,'\asset\img\image15.5.jpeg');
+INSERT INTO image(book_id, link) VALUES(15,'\asset\img\image15.6.jpeg');
+INSERT INTO image(book_id, link) VALUES(16,'\asset\img\image16.jpg');
+INSERT INTO image(book_id, link) VALUES(17,'\asset\img\image17.webp');
+INSERT INTO image(book_id, link) VALUES(18,'\asset\img\image18.webp');
+INSERT INTO image(book_id, link) VALUES(19,'\asset\img\image19.jpg');
+INSERT INTO image(book_id, link) VALUES(20,'\asset\img\image20.jpg');
