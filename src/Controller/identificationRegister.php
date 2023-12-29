@@ -42,7 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $entityManager->flush();
         $response = array('success' => true, 'message' => 'Account created');
         $_SESSION['user_id'] = $user->getId();
-        $_SESSION['test'] = $user->getName();
     } else {
         $arrayViolations = [];
         foreach ($violations as $violation) {

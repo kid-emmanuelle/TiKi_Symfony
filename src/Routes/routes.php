@@ -18,5 +18,6 @@ $routes->add('login', new Route('/login'));
 $routes->add('register', new Route('/register'));
 $routes->add('identificationLogin', new Route('/identificationLogin'));
 $routes->add('identificationRegister', new Route('/identificationRegister'));
+$routes->add('postReview', new Route('/postReview'));
 
 return $routes;

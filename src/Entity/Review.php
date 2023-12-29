@@ -27,7 +27,7 @@ class Review
         min: 0,
         max: 5,
     )]
-    private string $star;
+    private int $star;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'user')]
     private User $user;
@@ -57,12 +57,12 @@ class Review
         return $this;
     }
 
-    public function getStar(): string
+    public function getStar(): int
     {
         return $this->star;
     }
 
-    public function setStar(string $star): Review
+    public function setStar(int $star): Review
     {
         $this->star = $star;
         return $this;

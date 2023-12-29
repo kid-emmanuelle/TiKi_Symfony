@@ -7,7 +7,8 @@
     <link href="\asset\CSS\bookProfil.css" rel="stylesheet">
 {% endblock %}
 
-{% block content %}
+{% block body %}
+
     <div class="container">
         <div class="row flex-wrap-reverse flex-md-wrap">
             <div class="col-12 col-md-4">
@@ -37,14 +38,24 @@
                 <h3>Synopsis</h3>
                 <p>{{ book.description }}</p>
                 <h3>{{ book.price }}€</h3>
+                <button type="button" class="btn btn-primary">Add to basket</button>
             </div>
-        </div>
-        <div id="button-section" class="rounded bg-cyan">
-            <button type="button" class="btn btn-primary">Write a review</button>
-            <button type="button" class="btn btn-primary">Add to basket</button>
         </div>
         <hr>
         <div id="reviews">
+            <p class="d-inline-flex gap-1">
+                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Write a review
+                </a>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="input-group mb-3">
+                    <label for="customRange2" class="form-label">Give a rating from 1 to 5</label>
+                    <input type="range" class="form-range" min="1" max="5" id="star">
+                    <input id="reviewText" type="text" class="form-control" placeholder="Write your review" aria-label="Write your review">
+                    <button class="btn btn-outline-secondary" type="button" onclick="submitReview(this)" id="postbutton">Post</button>
+                </div>
+            </div>
             <h1>Customer Reviews:</h1>
             {% for review in book.reviews %}
                 {% if loop.first %}
@@ -92,6 +103,7 @@
 
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="\asset\JS\bookProfil.js"></script>
 
 {% endblock %}

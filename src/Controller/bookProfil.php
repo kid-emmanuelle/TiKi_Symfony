@@ -17,6 +17,7 @@ $book = $bookRepository->find($id);
 if ($book == null) {
     return new Response('The requested page doesn\'t exist', Response::HTTP_NOT_FOUND);
 }
+session_start();
 
 
 $recommandations = array();
@@ -31,7 +32,4 @@ foreach ($reviews as $review) {
             array_push($recommandations, $tmpBook);
     }
 }
-
-
-
 return new Response($twig->render('book/profil.html.twig', ['book' => $book, 'recommandations' => $recommandations]));
