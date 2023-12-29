@@ -134,6 +134,19 @@ class Book
         return $this;
     }
 
+    public function getAverageReview() :int
+    {
+        $result = 0;
+        $reviews = $this->getReviews()->getValues();
+        foreach ($reviews as $review){
+            $result+=$review->getStar();
+        }
+        if($result==0){
+            return 0;
+        }
+        return (int) ($result/count($reviews));
+    }
+
 
 
 

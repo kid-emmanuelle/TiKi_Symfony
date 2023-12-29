@@ -37,7 +37,7 @@ class User
     )]
     private string $firstname;
 
-    #[ORM\Column(type: 'string')]
+    #[ORM\Column(type: 'string', unique: true)]
     #[Assert\NotBlank]
     #[Assert\Email(
         message: 'The email {{ value }} is not a valid email',

@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ book.title }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="\asset\CSS\bookProfil.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row flex-wrap-reverse flex-md-wrap">
+            <div class="col-12 col-md-4">
+                {% for image in book.images %}
+                    {% if loop.first %}
+                        <img id="main-image" class="img-thumbnail" src="{{ image.link }}">
+                        <br>
+                    {% endif %}
+                    <img class="img-thumbnail img-small" src="{{ image.link }}" data-link="{{ image.link|raw }}"
+                         onclick="selectImg(this)">
+                    {% if loop.last %}
+                    {% endif %}
+                {% else %}
+                    <b>There are no images</b>
+                {% endfor %}
+            </div>
+
+            <div class="col-12 col-md-8">
+                <h1>{{ book.title }} - {{ book.format }}</h1>
+                <a href="#reviews"><h5>
+                <span style="color:gold; font-size: 25px">
+                {% set average_review = book.averageReview %}
+                    {% for i in 1..5 %}
+                        {{ i <= average_review ? "★" : "☆" }}
+                    {% endfor %}
+                </span> <span style="text-decoration: underline">{{ book.reviews|length }} Reviews</span></h5></a>
+                <h3>Synopsis</h3>
+                <p>{{ book.description }}</p>
+                <h3>{{ book.price }}€</h3>
+            </div>
+        </div>
+        <div id="button-section" class="rounded bg-cyan">
+            <button type="button" class="btn btn-primary">Write a review</button>
+            <button type="button" class="btn btn-primary">Add to basket</button>
+        </div>
+        <hr>
+        <div id="reviews">
+            <h1>Customer Reviews:</h1>
+            {% for review in book.reviews %}
+                {% if loop.first %}
+                    <ul>
+                {% endif %}
+                <li>
+                    <h5>{{ review.user.firstname }} {{ review.user.name }} - <span style="color:gold;">
+                        {% for i in 1..5 %}
+                            {{ i <= review.star ? "★" : "☆" }}
+                        {% endfor %}
+                    </span></h5>
+                    <p>{{ review.text }}</p>
+                </li>
+                {% if not loop.last %}
+                    <hr>
+                {% else %}
+                    </ul>
+                {% endif %}
+            {% else %}
+                <b>There are no reviews</b>
+            {% endfor %}
+        </div>
+        {% if( recommandations|length > 0 ) %}
+            <hr>
+
+            <h1>You may also like...</h1>
+        <div class="row">
+            {% for recommandation in recommandations %}
+            <div class="col-sm-2 mb-3 mb-sm-0">
+
+                <a href="/book/{{ recommandation.id }}">
+                <div class="card" style="width: 18rem;">
+                    <img src="{{ (recommandation.images|first).link }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text bold">{{ (recommandation.title) }}</p>
+                    </div>
+                </div>
+                </a>
+            </div>
+
+            {% endfor %}
+        </div>
+
+        {% endif %}
+
+    </div>
+
+    <script src="\asset\JS\bookProfil.js"></script>
+
+{% endblock %}
+
+

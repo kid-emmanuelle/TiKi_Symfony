@@ -11,7 +11,12 @@ $routes->add('fibonacci', new Route('/fibonacci/{nb}', ['nb' => 10], ['nb' => '^
 $routes->add('studentIndex', new Route('/student'));
 $routes->add('studentNew', new Route('/student/new'));
 $routes->add('studentShow', new Route('/student/{id}', [], ['id' => ('\d+')]));
+$routes->add('bookProfil', new Route('/book/{id}', [], ['id' => ('\d+')]));
 $routes->add('studentEdit', new Route('/student/{id}/edit', [], ['id' => ('\d+')]));
 $routes->add('studentDelete', new Route('/student/{id}/delete', [], ['id' => ('\d+')]));
+$routes->add('login', new Route('/login'));
+$routes->add('register', new Route('/register'));
+$routes->add('identificationLogin', new Route('/identificationLogin'));
+$routes->add('identificationRegister', new Route('/identificationRegister'));
 
 return $routes;
