@@ -2,6 +2,10 @@
 
 {% block title %}Home{% endblock %}
 
+{% block javascripts %}
+
+{% endblock %}
+
 {% block content %}
     {#======= Advertiser Section =======#}
     <section id="ads" class="d-flex align-items-center">
@@ -237,12 +241,276 @@
         </section><!-- End Cta Section -->
 
         {#============= Latest Products Section =============#}
-        <section id="products" class="products">
-            <div class="box-container">
-
+        <section id="latest-products" class="latest-products">
+            <div class="container" data-aos="fade-up">
+                <div class="products">
+                    <div class="section-title">
+                        <h2>Latest products</h2>
+                        <p>Our latest collection boasts a diverse range of compelling reads, from immersive fantasy epics to thought-provoking contemporary narratives, ensuring something captivating for every reader.</p>
+                    </div>
+                    <div class="box-container">
+                        {% for i in 0..7 %}
+                            <form action="" method="post" class="box" data-aos="zoom-in" data-aos-delay="200">
+                                <img class="image" src="{{ books[i].images[0].link }}" data-link="{{ books[i].images[0].link|raw }}" alt="">
+                                <div class="name">{{ books[i].title }}</div>
+                                <div class="price">${{ books[i].price }}/-</div>
+                                <input type="number" min="1" name="productt_quantity" value="1" class="qty">
+                                <input type="submit" value="Add to cart" name="add_to_cart" class="btn">
+                            </form>
+                        {% endfor %}
+                    </div>
+                </div>
+                <a href="#" class="btn-learn-more">Learn More</a>
             </div>
         </section><!-- End Latest Products Section -->
 
+        {#============= Authors Section =============#}
+        <section id="author" class="author section-bg">
+            <div class="container" data-aos="fade-up">
+                <div class="section-title">
+                    <h2>Famous Authors</h2>
+                    <p>Dive into works by acclaimed authors, whose stories resonate deeply with their masterful storytelling and insightful exploration of the human experience.</p>
+                </div>
 
+                <div class="row">
+
+                    <div class="col-lg-6">
+                        <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="pic"><img src="/asset/img/authors/author1.jpg" class="img-fluid" alt=""></div>
+                            <div class="member-info">
+                                <h4>Haruki Murakami</h4>
+                                <span>Contemporary Fiction</span>
+                                <p>His works often explore themes of isolation, human connection, and the complexities of modern life</p>
+                                <div class="social">
+                                    <a href=""><i class="ri-twitter-fill"></i></a>
+                                    <a href=""><i class="ri-facebook-fill"></i></a>
+                                    <a href=""><i class="ri-instagram-fill"></i></a>
+                                    <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 mt-4 mt-lg-0">
+                        <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="pic"><img src="/asset/img/authors/author2.jpg" class="img-fluid" alt=""></div>
+                            <div class="member-info">
+                                <h4>J.K. Rowling</h4>
+                                <span>Literature</span>
+                                <p>Her imaginative storytelling and intricate plots continue to resonate globally</p>
+                                <div class="social">
+                                    <a href=""><i class="ri-twitter-fill"></i></a>
+                                    <a href=""><i class="ri-facebook-fill"></i></a>
+                                    <a href=""><i class="ri-instagram-fill"></i></a>
+                                    <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 mt-4">
+                        <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="300">
+                            <div class="pic"><img src="/asset/img/authors/author3.jpg" class="img-fluid" alt=""></div>
+                            <div class="member-info">
+                                <h4>Brandon Sanderson</h4>
+                                <span>Literature</span>
+                                <p>His epic series have garnered immense praise for their richly detailed settings and complex characters</p>
+                                <div class="social">
+                                    <a href=""><i class="ri-twitter-fill"></i></a>
+                                    <a href=""><i class="ri-facebook-fill"></i></a>
+                                    <a href=""><i class="ri-instagram-fill"></i></a>
+                                    <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 mt-4">
+                        <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="400">
+                            <div class="pic"><img src="/asset/img/authors/author4.jpg" class="img-fluid" alt=""></div>
+                            <div class="member-info">
+                                <h4>Chimamanda Ngozi Adichie</h4>
+                                <span>Science Fiction</span>
+                                <p>Her works offer poignant insights into social issues while crafting compelling, deeply human stories</p>
+                                <div class="social">
+                                    <a href=""><i class="ri-twitter-fill"></i></a>
+                                    <a href=""><i class="ri-facebook-fill"></i></a>
+                                    <a href=""><i class="ri-instagram-fill"></i></a>
+                                    <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- End Team Section -->
+
+        {#============= Pricing of New Arrivals Section =============#}
+        <section id="pricing" class="pricing">
+            <div class="container" data-aos="fade-up">
+                <div class="section-title">
+                    <h2>New Arrivals</h2>
+                    <p>Discover our latest arrivals—a curated selection of gripping mysteries, heartwarming tales, and thought-provoking narratives that promise to captivate every reader's imagination.</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="box">
+                            <h3>{{ books[0].title }}</h3>
+                            <h4><sup>$</sup>{{ books[0].price }}<span>per one</span></h4>
+                            <div class="image">
+                                <img src="{{ books[0].images[0].link }}" data-link="{{ books[0].images[0].link|raw }}" alt="">
+                            </div>
+                            <a href="#" class="buy-btn">Discover It</a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="200">
+                        <div class="box featured">
+                            <h3>{{ books[2].title }}</h3>
+                            <h4><sup>$</sup>{{ books[2].price }}<span>per one</span></h4>
+                            <div class="image">
+                                <img src="{{ books[2].images[0].link }}" data-link="{{ books[2].images[0].link|raw }}" alt="">
+                            </div>
+                            <a href="#" class="buy-btn">Discover It</a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
+                        <div class="box">
+                            <h3>{{ books[3].title }}</h3>
+                            <h4><sup>$</sup>{{ books[3].price }}<span>per one</span></h4>
+                            <div class="image">
+                                <img src="{{ books[3].images[0].link }}" data-link="{{ books[3].images[0].link|raw }}" alt="">
+                            </div>
+                            <a href="#" class="buy-btn">Discover It</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- End Pricing Section -->
+
+        {#============= FAQ Section =============#}
+        <section id="faq" class="faq section-bg">
+            <div class="container" data-aos="fade-up">
+                <div class="section-title">
+                    <h2>Frequently Asked Questions</h2>
+                    <p>Find quick answers to common inquiries about orders, shipping, returns, and more. Browse through our FAQs below for swift assistance.</p>
+                </div>
+
+                <div class="faq-list">
+                    <ul>
+                        <li data-aos="fade-up" data-aos-delay="100">
+                            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">How can I track my order? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                            <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
+                                <p>
+                                    Tracking information is provided via email once your order is dispatched. You can also log in to your account to track the status of your shipment.
+                                </p>
+                            </div>
+                        </li>
+
+                        <li data-aos="fade-up" data-aos-delay="200">
+                            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">What is your return policy? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                            <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
+                                <p>
+                                    We accept returns within 30 days of delivery for eligible items. Please refer to our Returns & Refunds page for detailed instructions.
+                                </p>
+                            </div>
+                        </li>
+
+                        <li data-aos="fade-up" data-aos-delay="300">
+                            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">Are international deliveries available? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                            <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
+                                <p>
+                                    Yes, we offer international shipping. Shipping costs and delivery times may vary based on the destination.
+                                </p>
+                            </div>
+                        </li>
+
+                        <li data-aos="fade-up" data-aos-delay="400">
+                            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">How can I contact customer support? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                            <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
+                                <p>
+                                    Our customer support team is available via email at [info@tiki.fr] or through our Contact Us page. We aim to respond to inquiries within 24-48 hours.
+                                </p>
+                            </div>
+                        </li>
+
+                        <li data-aos="fade-up" data-aos-delay="500">
+                            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">Do you offer gift wrapping services? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                            <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
+                                <p>
+                                    Yes, we provide gift wrapping options at checkout for a delightful touch to your order.
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section><!-- End Frequently Asked Questions Section -->
+
+        {#============= Contact Section =============#}
+        <section id="contact" class="contact">
+            <div class="container" data-aos="fade-up">
+                <div class="section-title">
+                    <h2>Contact</h2>
+                    <p>Contact us if you would like more information about the services offered by TiKi. We will respond to you as quickly as possible within 24 hours and contact you directly by email or telephone number provided.</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-5 d-flex align-items-stretch">
+                        <div class="info">
+                            <div class="address">
+                                <i class="bi bi-geo-alt"></i>
+                                <h4>Location:</h4>
+                                <p>INSA Hauts-de-France, Aulnoy-Lez-Valenciennes, 59300 France</p>
+                            </div>
+
+                            <div class="email">
+                                <i class="bi bi-envelope"></i>
+                                <h4>Email:</h4>
+                                <p>info@tiki.fr</p>
+                            </div>
+
+                            <div class="phone">
+                                <i class="bi bi-phone"></i>
+                                <h4>Call:</h4>
+                                <p>(+33)7 69 77 22 99</p>
+                            </div>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2547.2358464872536!2d3.51252871597462!3d50.32485100428779!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2ed11bfed235f%3A0x55341a772648d80a!2sInstitut%20National%20des%20Sciences%20Appliqu%C3%A9es%20Hauts-de-France!5e0!3m2!1svi!2sfr!4v1678052061374!5m2!1svi!2sfr" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+                        <form action="/contact-to-email" method="post" role="form" class="php-email-form">
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="name">Your Name</label>
+                                    <input type="text" name="name" class="form-control" id="name" required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="name">Your Email</label>
+                                    <input type="email" class="form-control" name="email" id="email" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Subject</label>
+                                <input type="text" class="form-control" name="subject" id="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Message</label>
+                                <textarea class="form-control" name="message" rows="10" required></textarea>
+                            </div>
+                            <div class="my-3">
+                                <div class="loading">Loading</div>
+                                <div class="error-message"></div>
+                                <div class="sent-message">Your message has been sent. Thank you!</div>
+                            </div>
+                            <div class="text-center"><button type="submit">Send Message</button></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section><!-- End Contact Section -->
     </main>
 {% endblock %}

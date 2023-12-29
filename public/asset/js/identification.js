@@ -18,6 +18,19 @@
 //     })
 // })()
 
+// Function to update login button text based on user status
+function updateLoginButton(userLoggedIn, userName) {
+    var loginButton = document.getElementById("loginButton");
+
+    if (userLoggedIn) {
+        loginButton.textContent = userName;
+        loginButton.href = "#"; // Update this with the user's profile or logout link
+    } else {
+        loginButton.textContent = "Log in";
+        loginButton.href = "/login"; // Link to the login page
+    }
+}
+
 function submitLoginForm() {
     var username = $('#email').val();
     var password = $('#password').val();
@@ -32,7 +45,9 @@ function submitLoginForm() {
         data: { username: username, password: password },
         success: function(response) {
             if (response.success) {
-                window.location.href = '/';
+                // window.location.href = '/';
+                // Reload the page to reflect login changes or perform another AJAX call
+                location.reload();
             } else {
                 if(response.code === 1){
                     document.getElementById("email").classList.add('is-invalid');
