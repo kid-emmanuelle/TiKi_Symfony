@@ -1,7 +1,14 @@
 <?php
 
-/** @var Twig\Environment $twig */
+/**
+ * @var Twig\Environment $twig
+ * @var Doctrine\ORM\EntityManager $entityManager
+ */
 
+use Entity\Book;
 use Symfony\Component\HttpFoundation\Response;
 
-return new Response($twig->render('home/home.html.twig'));
+$bookRepository = $entityManager->getRepository(Book::class);
+$books = $bookRepository->findAll();
+
+return new Response($twig->render('home/home.html.twig', ['books' => $books]));
