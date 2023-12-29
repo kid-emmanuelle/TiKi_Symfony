@@ -7,26 +7,34 @@
                 <li><a class="nav-link scrollto active" href="#ads">Home</a></li>
                 <li><a class="nav-link scrollto" href="#about">About</a></li>
                 <li><a class="nav-link scrollto" href="#services">Services</a></li>
-                <li class="dropdown"><a href="#"><span>Books</span> <i class="bi bi-chevron-down"></i></a>
+                <li class="dropdown"><a class="nav-link scrollto" href="#latest-products"><span>Books</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a href="#">Drop Down 1</a></li>
-                        <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                        <li><a href="#">Fantasy</a></li>
+                        <li class="dropdown"><a href="#"><span>Science Fiction</span> <i class="bi bi-chevron-right"></i></a>
                             <ul>
-                                <li><a href="#">Deep Drop Down 1</a></li>
-                                <li><a href="#">Deep Drop Down 2</a></li>
-                                <li><a href="#">Deep Drop Down 3</a></li>
-                                <li><a href="#">Deep Drop Down 4</a></li>
-                                <li><a href="#">Deep Drop Down 5</a></li>
+                                <li><a href="#">Hard Science Fiction</a></li>
+                                <li><a href="#">Space Opera</a></li>
+                                <li><a href="#">Cyberpunk</a></li>
+                                <li><a href="#">Dystopian Fiction</a></li>
+                                <li><a href="#">Time Travel</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">Drop Down 2</a></li>
-                        <li><a href="#">Drop Down 3</a></li>
-                        <li><a href="#">Drop Down 4</a></li>
+                        <li><a href="#">Romance</a></li>
+                        <li><a href="#">Thriller/Suspense</a></li>
+                        <li><a href="#">Horror</a></li>
                     </ul>
                 </li>
                 <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-                <li><a class="nav-link scrollto" href="#"><img src="asset/img/icon-cart.png" alt="" class="img-fluid" style="width: 30px;"></a></li>
-                <li><a class="login scrollto" href="#">Log in</a></li>
+                <li><a class="nav-link scrollto" href="#"><img src="asset/img/icon-cart.png" alt="" class="img-fluid" style="width: 30px;">
+                        <div class="cart-number">{{ cart_rows_numbers }}</div>
+                    </a>
+                </li>
+                <li><a class="nav-link scrollto" href="#"><i class="bi bi-search" style="font-size: 22px"></i></a></li>
+                {% if is_logged_in %}
+                    <li><a class="scrollto" href="/profile">{{ user_name }}</a></li>
+                {% else %}
+                    <li><a class="login scrollto" href="/login">Log in</a></li>
+                {% endif %}
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>

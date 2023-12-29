@@ -95,7 +95,6 @@
         const toggleBacktotop = () => {
             if (window.scrollY > 100) {
                 backtotop.classList.add('active')
-                console.log(backtotop.classList.toString());
             } else {
                 backtotop.classList.remove('active')
             }
@@ -249,6 +248,31 @@
             easing: "ease-in-out",
             once: true,
             mirror: false
+        });
+    });
+
+    $(document).ready(function () {
+        $('.php-email-form').submit(function (e) {
+            e.preventDefault();
+            var form = $(this);
+            var formData = form.serialize();
+
+            $.ajax({
+                type: 'POST',
+                url: form.attr('action'),
+                data: formData,
+                success: function (response) {
+                    var result = JSON.parse(response);
+                    if (result.status === 'success') {
+                        $('.sent-message').text(result.message).show();
+                    } else {
+                        $('.error-message').text(result.message).show();
+                    }
+                },
+                error: function () {
+                    $('.error-message').text('Failed to send message. Please try again later.').show();
+                }
+            });
         });
     });
 })()

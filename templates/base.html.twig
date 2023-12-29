@@ -41,6 +41,8 @@
         <script src="asset/vendor/swiper/swiper-bundle.min.js"></script>
         <script src="asset/vendor/waypoints/noframework.waypoints.js"></script>
         <script src="asset/vendor/php-email-form/validate.js"></script>
+        <!-- AJAX - JQuery JS Files -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <!-- Place project specific Javascript in this file -->
         <script defer src="/asset/js/base.js"></script>
         {% block javascripts %}
@@ -51,6 +53,7 @@
         {{ include('navbar.html.twig') }}
         {% block content %} {% endblock %}
         <!-- Back to top -->
+        {{ include('footer.html.twig') }}
         <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
         <div id="preloader"></div>
     </body>
