@@ -1,0 +1,223 @@
+/*--------------------------------------------------------------
+# Breadcrumbs
+--------------------------------------------------------------*/
+.breadcrumbs {
+    padding: 15px 0;
+    background: #f3f5fa;
+    min-height: 40px;
+    margin-top: 72px;
+}
+
+@media (max-width: 992px) {
+    .breadcrumbs {
+        margin-top: 68px;
+    }
+}
+
+.breadcrumbs h2 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #37787e;
+}
+
+.breadcrumbs ol {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0 0 10px 0;
+    margin: 0;
+    font-size: 14px;
+}
+
+.breadcrumbs ol li+li {
+    padding-left: 10px;
+}
+
+.breadcrumbs ol li+li::before {
+    display: inline-block;
+    padding-right: 10px;
+    color: #4668a2;
+    content: "/";
+}
+
+/*--------------------------------------------------------------
+# Search Form
+--------------------------------------------------------------*/
+.search-form form {
+    max-width: 1200px;
+    margin:0 auto;
+    display: flex;
+    gap:1rem;
+}
+
+.search-form form .btn {
+    display: inline-block;
+    padding: 0.6rem 1.5rem;
+    cursor: pointer;
+    color: #6bc7d0;
+    font-size: 1rem;
+    font-weight: 600;
+    border: 2px solid #6bc7d0;
+    border-radius: .5rem;
+    text-transform: capitalize;
+    margin-top: 0;
+}
+
+.search-form form .btn:hover {
+    color: #ffffff;
+    background: #6bc7d0;
+}
+
+.search-form form .box {
+    width: 100%;
+    padding: 0.3rem 0.3rem;
+    border: 1px solid #37787e;
+    font-size: 1rem;
+    color: #000000;
+    background-color: #ffffff;
+    border-radius: .5rem;
+}
+
+.search-form .searchForm .error-message {
+    display: none;
+    color: #fff;
+    background: #ed3c0d;
+    text-align: left;
+    padding: 15px;
+    font-weight: 600;
+}
+
+.search-form .searchForm .error-message br+br {
+    margin-top: 25px;
+}
+
+.search-form .searchForm .sent-message {
+    display: none;
+    color: #fff;
+    background: #18d26e;
+    text-align: center;
+    padding: 15px;
+    font-weight: 600;
+}
+
+.search-form .searchForm .loading {
+    display: none;
+    background: #fff;
+    text-align: center;
+    padding: 15px;
+}
+
+.search-form .searchForm .loading:before {
+    content: "";
+    display: inline-block;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    margin: 0 10px -6px 0;
+    border: 3px solid #18d26e;
+    border-top-color: #eee;
+    -webkit-animation: animate-loading 1s linear infinite;
+    animation: animate-loading 1s linear infinite;
+}
+
+.search-form .searchForm .form-group {
+    margin-bottom: 20px;
+}
+
+/*--------------------------------------------------------------
+# Books Result (Products)
+--------------------------------------------------------------*/
+.products {
+    display: flex;
+    justify-content: center;
+}
+.products .box-container {
+    max-width: 1200px;
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 17rem);
+    align-items: flex-start;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.products .box-container .box {
+    box-shadow: 0px 0 15px 0 rgba(190, 248, 242, 0.55);
+    padding: 50px 30px;
+    transition: all ease-in-out 0.4s;
+    background: #fff;
+    text-align: center;
+    height: 37rem;
+    position: relative;
+}
+
+.products .box-container .box img {
+    height: 22rem;
+    width: 14.66rem;
+    object-fit: cover;
+}
+
+.products .box-container .box .name {
+    padding: 10px 0 0 0;
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+}
+
+.products .box-container .box .price {
+    position: absolute;
+    top: 2rem; left: 1rem;
+    border-radius: .5rem;
+    padding: .5rem 1rem;
+    font-size: 17px;
+    font-weight: bold;
+    background: rgba(166, 15, 15, 0.91);
+    color: #ffffff;
+}
+
+.products .box-container .box .qty {
+    width: 22%;
+    padding: 2px 7px;
+    border-radius: .5rem;
+    border: 1px solid #37787e;
+    color: black;
+    margin: 10px 5px;
+}
+
+.products .box-container .box .btn {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 12px 32px;
+    transition: 0.3s;
+    line-height: 2px;
+    color: #6bc7d0;
+    -webkit-animation-delay: 0.8s;
+    animation-delay: 0.8s;
+    border: 2px solid #6bc7d0;
+    border-radius: 5px;
+}
+
+.products .box-container .box .btn:hover {
+    background: #6bc7d0;
+    color: #fff;
+    text-decoration: none;
+}
+
+/*--------------------------------------------------------------
+# No Result
+--------------------------------------------------------------*/
+.no-result {
+    display: flex;
+    justify-content: center;
+}
+
+.no-result i,
+.no-result p {
+    align-items: center;
+    margin-top: 60px;
+    font-size: 25px;
+    color: rgb(123, 133, 132);
+}
