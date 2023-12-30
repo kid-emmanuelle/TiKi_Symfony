@@ -10,6 +10,8 @@ $routes->add('contact', new Route('/contact-to-email'));
 $routes->add('about', new Route('/about'));
 $routes->add('search', new Route('/search'));
 $routes->add('bookSearch', new Route('/bookSearch'));
+$routes->add('addToCart', new Route('/addToCart'));
+$routes->add('userCart', new Route('/{user}/cart', ['user' => 'user']));
 $routes->add('hello', new Route('/hello/{name}', ['name' => 'World']));
 $routes->add('fibonacci', new Route('/fibonacci/{nb}', ['nb' => 10], ['nb' => '^[1-9][0-9]*$']));
 $routes->add('studentIndex', new Route('/student'));

@@ -1,0 +1,178 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Shopping Cart{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="/asset/css/userCart.css" rel="stylesheet">
+    <link href="" rel="stylesheet">
+{% endblock %}
+
+{% block javascripts %}
+    <script defer src="/asset/js/innerpage.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+{% endblock %}
+
+{% block content %}
+    {#============= Breadcrumbs Section =============#}
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <ol>
+                <li><a href="/">Home</a></li>
+                <li>Cart</li>
+            </ol>
+            <h2>Shopping Cart</h2>
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+        <section class="h-100 h-custom" >
+            <div class="section-title">
+                <h2 style="font-size: 40px">My Shopping Cart</h2>
+            </div>
+            <div class="container py-5 h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body p-4">
+                                <div class="row">
+                                    <div class="col-lg-7">
+                                        <h5 class="mb-3"><a href="/search" class="text-body"><i
+                                                        class="fas fa-long-arrow-alt-left me-2"></i>Continue shopping</a></h5>
+                                        <hr>
+                                        <div class="d-flex justify-content-between align-items-center mb-4">
+                                            <div>
+                                                <p class="mb-1">Shopping cart</p>
+                                                <p class="mb-0">You have {{ cart_rows_numbers }} items in your cart</p>
+                                            </div>
+                                            <div>
+                                                <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!" class="text-body">price <i class="fas fa-angle-down mt-1"></i></a></p>
+                                            </div>
+                                        </div>
+
+                                        {% for book in books %}
+                                        <div class="card mb-3">
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between">
+                                                    <div class="d-flex flex-row align-items-center">
+                                                        <div>
+                                                            <img
+                                                                    src="{{ book.images[0].link }}" data-link="{{ book.images[0].link|raw }}"
+                                                                    class="img-fluid rounded-3" alt="Shopping item" style="width: 65px; height: 65px; object-fit: cover">
+                                                        </div>
+                                                        <div class="ms-3">
+                                                            <h5>{{ book.title }}</h5>
+                                                            <p class="small mb-0">256GB, Navy Blue</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex flex-row align-items-center">
+                                                        <div style="width: 50px;">
+                                                            <h5 class="fw-normal mb-0"><input type="number" value="1" min="1" style="width: 40px"></h5>
+                                                        </div>
+                                                        <div style="width: 80px;">
+                                                            <h5 class="mb-0">${{ book.price }}\-</h5>
+                                                        </div>
+                                                        <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+
+                                    </div>
+                                    <div class="col-lg-5">
+
+                                        <div class="card bg-primary text-white rounded-3">
+                                            <div class="card-body" style="background: linear-gradient(#37787e 0%, #74b5c5 100%)">
+                                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                                    <h5 class="mb-0">Card details</h5>
+                                                    <img src="/asset/img/authors/author1.jpg"
+                                                         class="img-fluid rounded-3" style="width: 65px;" alt="Avatar">
+                                                </div>
+
+                                                <form class="mt-4">
+                                                    <div class="form-outline form-white mb-4">
+                                                        <input type="text" id="typeName" class="form-control form-control-lg" size="17"
+                                                               placeholder="Cardholder's Name" style="font-size: 15px; height: 30px" />
+                                                        <label class="form-label" for="typeName" style="font-size: 15px">Cardholder's Name</label>
+                                                    </div>
+
+                                                    <div class="form-outline form-white mb-4">
+                                                        <input type="text" id="typeText" class="form-control form-control-lg" size="17"
+                                                               placeholder="1234 5678 9012 3457" minlength="19" maxlength="19" style="font-size: 15px; height: 30px"/>
+                                                        <label class="form-label" for="typeText" style="font-size: 15px">Card Number</label>
+                                                    </div>
+
+                                                    <div class="row mb-4">
+                                                        <div class="col-md-6">
+                                                            <div class="form-outline form-white">
+                                                                <input type="text" id="typeExp" class="form-control form-control-lg"
+                                                                       placeholder="MM/YYYY" size="7" id="exp" minlength="7" maxlength="7" style="font-size: 15px; height: 30px"/>
+                                                                <label class="form-label" for="typeExp" style="font-size: 15px">Expiration</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-outline form-white">
+                                                                <input type="password" id="typeText" class="form-control form-control-lg"
+                                                                       placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" style="font-size: 15px; height: 30px"/>
+                                                                <label class="form-label" for="typeText" style="font-size: 15px">Cvv</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </form>
+
+                                                <hr class="my-4">
+
+                                                <div class="d-flex justify-content-between">
+                                                    <p class="mb-2">Subtotal</p>
+                                                    <p class="mb-2">${{ totalPrice }}\-</p>
+                                                </div>
+
+                                                <div class="d-flex justify-content-between">
+                                                    <p class="mb-2">Shipping</p>
+                                                    <p class="mb-2">$20.00</p>
+                                                </div>
+
+                                                <div class="d-flex justify-content-between mb-4">
+                                                    <p class="mb-2">Total(Incl. taxes)</p>
+                                                    <p class="mb-2">${{ totalPrice+20 }}\-</p>
+                                                </div>
+                                                <div class="d-flex justify-content-center align-content-center">
+                                                    <button type="button" class="btn btn-info btn-block btn-lg" style="background: #ffffff; border: 2px solid #47d7e4">
+                                                        <div class="d-flex justify-content-between">
+                                                            <span id="totalPrice">${{ totalPrice+20 }}\-</span>
+                                                            <span>&nbsp;Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
+                                                        </div>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+{#        {% if books %}#}
+{#            <div class="container justify-content-center products " data-aos="fade-up">#}
+{#                <div class="box-container searchResults" id="searchResults" data-aos="zoom-in" data-aos-delay="200">#}
+{#                    {% for book in books %}#}
+{#                        <form id="addToCartForm{{ book.id }}" action="" method="post" role="form" class="box addToCartForm">#}
+{#                            <img class="image" src="{{ book.images[0].link }}" data-link="{{ book.images[0].link|raw }}" alt="">#}
+{#                            <div class="name">{{ book.title }}</div>#}
+{#                            <div class="price">${{ book.price }}/-</div>#}
+{#                            <input type="hidden" name="bookId" value="{{ book.id }}">#}
+{#                            <input type="number" min="1" name="product_quantity" value="1" class="qty">#}
+{#                        </form>#}
+{#                    {% endfor %}#}
+{#                </div>#}
+{#            </div>#}
+{#        {% else %}#}
+{#            <div class="no-result"><i class="bi-x-circle"></i>&nbsp;<p class="empty">No results found!</p></div>#}
+{#        {% endif %}#}
+
+
+{% endblock %}

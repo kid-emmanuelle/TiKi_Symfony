@@ -12,7 +12,7 @@
 
         <!-- File CSS & style ================================================== -->
         <!-- Logo Icon -->
-        <link rel="icon" type="image/x-icon" href="asset/img/tiki_logo_icon.png">
+        <link rel="icon" type="image/x-icon" href="/asset/img/tiki_logo_icon.png">
         <!-- Bootstrap Icon -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
         <!-- Latest compiled and minified Bootstrap CSS -->
@@ -20,11 +20,11 @@
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
         <!-- Vendor CSS Files -->
-        <link href="asset/vendor/aos/aos.css" rel="stylesheet">
-        <link href="asset/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-        <link href="asset/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-        <link href="asset/vendor/remixicon/remixicon.css" rel="stylesheet">
-        <link href="asset/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+        <link href="/asset/vendor/aos/aos.css" rel="stylesheet">
+        <link href="/asset/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="/asset/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+        <link href="/asset/vendor/remixicon/remixicon.css" rel="stylesheet">
+        <link href="/asset/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
         {% block stylesheets %}
             <!-- This file stores project-specific CSS -->
             <link href="/asset/css/base.css" rel="stylesheet">
@@ -35,12 +35,12 @@
         <!-- Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
         <!-- Vendor JS Files -->
-        <script src="asset/vendor/aos/aos.js"></script>
-        <script src="asset/vendor/glightbox/js/glightbox.min.js"></script>
-        <script src="asset/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-        <script src="asset/vendor/swiper/swiper-bundle.min.js"></script>
-        <script src="asset/vendor/waypoints/noframework.waypoints.js"></script>
-        <script src="asset/vendor/php-email-form/validate.js"></script>
+        <script src="/asset/vendor/aos/aos.js"></script>
+        <script src="/asset/vendor/glightbox/js/glightbox.min.js"></script>
+        <script src="/asset/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+        <script src="/asset/vendor/swiper/swiper-bundle.min.js"></script>
+        <script src="/asset/vendor/waypoints/noframework.waypoints.js"></script>
+        <script src="/asset/vendor/php-email-form/validate.js"></script>
         <!-- AJAX - JQuery JS Files -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <!-- Place project specific Javascript in this file -->
@@ -64,9 +64,15 @@
             // Function to update the login button
             function updateButton(userLoggedIn, userName) {
                 var loginButton = document.getElementById("loginButton");
-                console.log(loginButton);
-                console.log(loginButton.textContent);
-
+                if (userLoggedIn) {
+                    loginButton.textContent = userName;
+                    loginButton.href = "#"; // Update this with the user's profile or logout link
+                    setCookie('loggedIn', 'true', 1); // 'loggedIn' set to 'true' with an expiration of 1 day
+                    setCookie('userName', userName, 1); // 'userName' set to 'JohnDoe' with an expiration of 1 day
+                } else {
+                    loginButton.textContent = "Log in";
+                    loginButton.href = "/login"; // Link to the login page
+                }
             }
 
             function getCookie(name) {

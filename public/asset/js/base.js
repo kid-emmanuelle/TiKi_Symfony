@@ -278,4 +278,81 @@
             });
         });
     });
+
+    /**
+     * Function set cookie and get cookie of id of a session
+     * Multiple cookie functional
+     */
+    function setCookie(name, value, days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+
+        // Get existing cookie value
+        var existingValue = getCookie(name);
+
+        // Append the new value to existing or create a new value
+        var newValue = existingValue ? existingValue + ',' + value : value;
+
+        document.cookie = name + "=" + newValue + expires + "; path=/";
+    }
+
+    function getCookie(name) {
+        var cookieName = name + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var cookieArray = decodedCookie.split(';');
+
+        for (var i = 0; i < cookieArray.length; i++) {
+            var cookie = cookieArray[i];
+            while (cookie.charAt(0) == ' ') {
+                cookie = cookie.substring(1);
+            }
+            if (cookie.indexOf(cookieName) == 0) {
+                return cookie.substring(cookieName.length, cookie.length);
+            }
+        }
+        return null;
+    }
+
+    /**
+     *
+     */
+    $(document).ready(function () {
+        $('.addToCartForm').submit(function (e) {
+            e.preventDefault();
+            var form = $(this);
+            var formData = form.serialize();
+            var bookId = parseInt(form.find('input[name="bookId"]').val()); // Get the specific book ID for the submitted form
+            console.log('Book ID:', bookId);
+
+            $.ajax({
+                type: 'POST',
+                url: form.attr('action'),
+                data: formData,
+                success: function(response) {
+                    var result = JSON.parse(response);
+                    var successMessage = form.find('.successMessage'); // Get the specific success message for this form
+                    var errorMessage = form.find('.errorMessage'); // Get the specific error message for this form
+
+                    if (result.status === 'success') {
+                        // successMessage.text(result.message).show();
+                        setCookie('bookId', bookId, 1);
+                        alert(result.message + ' Book Id: ' + bookId);
+                    } else {
+                        // errorMessage.text(result.message).show();
+                        alert(result.message + ' Book Id: ' + bookId);
+                    }
+                },
+                error: function () {
+                    alert('Failed to add book. Please try again later!');
+                }
+            });
+            // return false;
+        });
+    });
+
+
 })()

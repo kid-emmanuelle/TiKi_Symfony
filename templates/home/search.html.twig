@@ -10,6 +10,7 @@
 
 {% block javascripts %}
     <script defer src="/asset/js/innerpage.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -18,9 +19,9 @@
         <div class="container">
             <ol>
                 <li><a href="/">Home</a></li>
-                <li>Search Books</li>
+                <li>Books</li>
             </ol>
-            <h2>Search Books</h2>
+            <h2>Our Collections</h2>
         </div>
     </section><!-- End Breadcrumbs -->
 
@@ -34,15 +35,19 @@
 
         {% if books %}
             <div class="container justify-content-center products " data-aos="fade-up">
-                <div class="box-container" id="searchResults">
-
+                <div class="box-container searchResults" id="searchResults" data-aos="zoom-in" data-aos-delay="200">
                         {% for book in books %}
-                            <form action="" method="post" class="box" data-aos="zoom-in" data-aos-delay="200">
-                                <img class="image" src="{{ book.images[0].link }}" data-link="{{ book.images[0].link|raw }}" alt="">
+                            <form id="addToCartForm{{ book.id }}" action="/addToCart" method="post" role="form" class="box addToCartForm">
+                                <a href="/book/{{ book.id }}">
+                                    <img class="image" src="{{ book.images[0].link }}" data-link="{{ book.images[0].link|raw }}" alt="">
+                                </a>
                                 <div class="name">{{ book.title }}</div>
                                 <div class="price">${{ book.price }}/-</div>
+                                <input type="hidden" name="bookId" value="{{ book.id }}">
                                 <input type="number" min="1" name="product_quantity" value="1" class="qty">
-                                <input type="submit" value="Add to cart" name="add_to_cart" class="btn">
+                                <div id="successMessage{{ book.id }}" class="successMessage" style="display: none; color: green;"></div>
+                                <div id="errorMessage{{ book.id }}" class="errorMessage" style="display: none; color: red;"></div>
+                                <button type="submit" class="btn">Add to cart</button>
                             </form>
                         {% endfor %}
                 </div>
@@ -51,8 +56,5 @@
             <div class="no-result"><i class="bi-x-circle"></i>&nbsp;<p class="empty">No results found!</p></div>
         {% endif %}
     </section>
-
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="/asset/js/search.js"></script>
 
 {% endblock %}

@@ -7,103 +7,126 @@
     <link href="\asset\css\bookProfil.css" rel="stylesheet">
 {% endblock %}
 
+{% block javascripts %}
+    <script defer src="/asset/js/innerpage.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="/asset/js/bookProfil.js"></script>
+{% endblock %}
+
 {% block content %}
-    <div class="container">
-        <div class="row flex-wrap-reverse flex-md-wrap">
-            <div class="col-12 col-md-4">
-                {% for image in book.images %}
-                    {% if loop.first %}
-                        <img id="main-image" class="img-thumbnail" src="{{ image.link }}">
-                        <br>
-                    {% endif %}
-                    <img class="img-thumbnail img-small" src="{{ image.link }}" data-link="{{ image.link|raw }}" onclick="selectImg(this)">
-                    {% if loop.last %}
-                    {% endif %}
-                {% else %}
-                    <b>There are no images</b>
-                {% endfor %}
-            </div>
+    {#============= Breadcrumbs Section =============#}
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <ol>
+                <li><a href="/">Home</a></li>
+                <li><a href="/search">Book</a></li>
+                <li>{{ book.title }}</li>
+            </ol>
+            <h2>{{ book.title }}</h2>
+        </div>
+    </section><!-- End Breadcrumbs -->
 
-            <div class="col-12 col-md-8">
-                <h1>{{ book.title }} - {{ book.format }}</h1>
-                <a href="#reviews"><h5>
-                <span style="color:gold; font-size: 25px">
-                {% set average_review = book.averageReview %}
-                    {% for i in 1..5 %}
-                        {{ i <= average_review ? "★" : "☆" }}
+    <section class="inner-page">
+        <div class="container" data-aos="fade-up">
+            <div class="row flex-wrap-reverse flex-md-wrap">
+                <div class="col-12 col-md-4 book-detail-images" data-aos="zoom-in" data-aos-delay="200">
+                    {% for image in book.images %}
+                        {% if loop.first %}
+                            <img id="main-image" class="img-thumbnail main-image" src="{{ image.link }}">
+                            <br>
+                        {% endif %}
+                        <img class="img-thumbnail img-small" src="{{ image.link }}" data-link="{{ image.link|raw }}" onclick="selectImg(this)">
+                        {% if loop.last %}
+                        {% endif %}
+                    {% else %}
+                        <b>There are no images</b>
                     {% endfor %}
-                </span> <span style="text-decoration: underline">{{ book.reviews|length }} Reviews</span></h5></a>
-                <h3>Synopsis</h3>
-                <p>{{ book.description }}</p>
-                <h3>{{ book.price }}€</h3>
-                <button type="button" class="btn btn-primary">Add to cart</button>
-            </div>
-        </div>
-        <hr>
-        <div id="reviews">
-            <div class="collapse" id="collapseExample">
-                <div class="input-group mb-3">
-                    <label for="customRange2" class="form-label">Give a rating from 1 to 5</label>
-                    <input type="range" class="form-range" min="1" max="5" id="star">
-                    <input id="reviewText" type="text" class="form-control" placeholder="Write your review" aria-label="Write your review">
-                    <button class="btn btn-outline-secondary" type="button" id="postbutton" onclick="submitReview(this)">Post</button>
                 </div>
-            </div>
-            <h1>Customer Reviews:</h1>
-            {% for review in book.reviews %}
-                {% if loop.first %}
-                    <ul>
-                {% endif %}
-                <li>
-                    <h5>{{ review.user.firstname }} {{ review.user.name }} - <span style="color:gold;">
+
+                <div class="col-12 col-md-8 book-details">
+                    <h1 style="font-size: 60px; color: #37787e">{{ book.title }} - {{ book.format }}</h1>
+                    <a href="#reviews"><h5>
+                    <span style="color:gold; font-size: 25px">
+                    {% set average_review = book.averageReview %}
                         {% for i in 1..5 %}
-                            {{ i <= review.star ? "★" : "☆" }}
+                            {{ i <= average_review ? "★" : "☆" }}
                         {% endfor %}
-                    </span></h5>
-                    <p>{{ review.text }}</p>
-                </li>
-                {% if not loop.last %}
-                    <hr>
-                {% else %}
-                    </ul>
-                {% endif %}
-            {% else %}
-                <b>There are no reviews</b>
-            {% endfor %}
-        </div>
-        {% if( recommandations|length > 0 ) %}
-            <hr>
-
-        <section id="pricing" class="pricing">
-            <div class="container" data-aos="fade-up">
-                <div class="section-title">
-                    <h2>You may also like...</h2>
+                    </span> <span style="text-decoration: underline">{{ book.reviews|length }} Reviews</span></h5></a>
+                    <h3>Synopsis</h3>
+                    <p>{{ book.description }}</p>
+                    <h3 class="price">${{ book.price }}\-</h3>
+                    <form id="addToCartForm{{ book.id }}" action="/addToCart" method="post" role="form" class="box addToCartForm">
+                        <input type="hidden" name="bookId" value="{{ book.id }}">
+                        <input type="number" min="1" name="product_quantity" value="1" class="qty" style="width: 50px; height: 45px; padding: 5px; font-size: 18px; border: 1px solid; border-radius: 5px">
+                        <div id="successMessage{{ book.id }}" class="successMessage" style="display: none; color: green;"></div>
+                        <div id="errorMessage{{ book.id }}" class="errorMessage" style="display: none; color: red;"></div>
+                        <button type="submit" class="btn btn-primary">Add to cart</button>
+                    </form>
                 </div>
-
-                <div class="row">
-            {% for recommandation in recommandations %}
-                <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
-                    <div class="box">
-                        <h3>{{ recommandation.title }}</h3>
-                        <h4><sup>$</sup>{{ recommandation.price }}<span>per one</span></h4>
-                        <div class="image">
-                            <img src="{{ recommandation.images[0].link }}" data-link="{{ recommandation.images[0].link|raw }}" alt="">
-                        </div>
-                        <a href="/book/{{ recommandation.id }}" class="buy-btn">Discover It</a>
+            </div>
+            <hr>
+            <div id="reviews">
+                <div class="collapse" id="collapseExample">
+                    <div class="input-group mb-3">
+                        <label for="customRange2" class="form-label">Give a rating from 1 to 5</label>
+                        <input type="range" class="form-range" min="1" max="5" id="star">
+                        <input id="reviewText" type="text" class="form-control" placeholder="Write your review" aria-label="Write your review">
+                        <button class="btn btn-outline-secondary" type="button" id="postbutton" onclick="submitReview(this)">Post</button>
                     </div>
                 </div>
-
-            {% endfor %}
-                </div>
+                <h1>Customer Reviews:</h1>
+                {% for review in book.reviews %}
+                    {% if loop.first %}
+                        <ul>
+                    {% endif %}
+                    <li>
+                        <h5>{{ review.user.firstname }} {{ review.user.name }} - <span style="color:gold;">
+                            {% for i in 1..5 %}
+                                {{ i <= review.star ? "★" : "☆" }}
+                            {% endfor %}
+                        </span></h5>
+                        <p>{{ review.text }}</p>
+                    </li>
+                    {% if not loop.last %}
+                        <hr>
+                    {% else %}
+                        </ul>
+                    {% endif %}
+                {% else %}
+                    <b>There are no reviews</b>
+                {% endfor %}
             </div>
+            {% if( recommandations|length > 0 ) %}
+                <hr>
+
+            <section id="pricing" class="pricing">
+                <div class="container" data-aos="fade-up">
+                    <div class="section-title">
+                        <h2>You may also like...</h2>
+                    </div>
+
+                    <div class="row">
+                {% for recommandation in recommandations %}
+                    <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
+                        <div class="box">
+                            <h3>{{ recommandation.title }}</h3>
+                            <h4><sup>$</sup>{{ recommandation.price }}<span>per one</span></h4>
+                            <div class="image">
+                                <img src="{{ recommandation.images[0].link }}" data-link="{{ recommandation.images[0].link|raw }}" alt="">
+                            </div>
+                            <a href="/book/{{ recommandation.id }}" class="buy-btn">Discover It</a>
+                        </div>
+                    </div>
+
+                {% endfor %}
+                    </div>
+                </div>
+            </section>
+
+            {% endif %}
+
+        </div>
     </section>
-
-        {% endif %}
-
-    </div>
-
-    <script src="\asset\js\bookProfil.js"></script>
-
 {% endblock %}
 
 

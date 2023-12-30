@@ -1,0 +1,127 @@
+/*--------------------------------------------------------------
+# Breadcrumbs
+--------------------------------------------------------------*/
+.breadcrumbs {
+    padding: 15px 0;
+    background: #f3f5fa;
+    min-height: 40px;
+    margin-top: 72px;
+}
+
+@media (max-width: 992px) {
+    .breadcrumbs {
+        margin-top: 68px;
+    }
+}
+
+.breadcrumbs h2 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #37787e;
+}
+
+.breadcrumbs ol {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0 0 10px 0;
+    margin: 0;
+    font-size: 14px;
+}
+
+.breadcrumbs ol li+li {
+    padding-left: 10px;
+}
+
+.breadcrumbs ol li+li::before {
+    display: inline-block;
+    padding-right: 10px;
+    color: #4668a2;
+    content: "/";
+}
+
+/*--------------------------------------------------------------
+# Shopping Cart
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Books Result (Products)
+--------------------------------------------------------------*/
+/*.products {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*}*/
+
+/*.products .box-container {*/
+/*    max-width: 1200px;*/
+/*    margin-top: 50px;*/
+/*    display: grid;*/
+/*    grid-template-columns: repeat(auto-fit, 17rem);*/
+/*    align-items: flex-start;*/
+/*    gap: 1.5rem;*/
+/*    justify-content: center;*/
+/*}*/
+
+/*.products .box-container .box {*/
+/*    box-shadow: 0px 0 15px 0 rgba(190, 248, 242, 0.55);*/
+/*    padding: 50px 30px;*/
+/*    transition: all ease-in-out 0.4s;*/
+/*    background: #fff;*/
+/*    text-align: center;*/
+/*    height: 37rem;*/
+/*    position: relative;*/
+/*}*/
+
+/*.products .box-container .box img {*/
+/*    height: 22rem;*/
+/*    width: 14.66rem;*/
+/*    object-fit: cover;*/
+/*}*/
+
+/*.products .box-container .box .name {*/
+/*    padding: 10px 0 0 0;*/
+/*    font-size: 15px;*/
+/*    font-weight: bold;*/
+/*    color: black;*/
+/*}*/
+
+/*.products .box-container .box .price {*/
+/*    position: absolute;*/
+/*    top: 2rem; left: 1rem;*/
+/*    border-radius: .5rem;*/
+/*    padding: .5rem 1rem;*/
+/*    font-size: 17px;*/
+/*    font-weight: bold;*/
+/*    background: rgba(166, 15, 15, 0.91);*/
+/*    color: #ffffff;*/
+/*}*/
+
+/*.products .box-container .box .qty {*/
+/*    width: 22%;*/
+/*    padding: 2px 7px;*/
+/*    border-radius: .5rem;*/
+/*    border: 1px solid #37787e;*/
+/*    color: black;*/
+/*    margin: 10px 5px;*/
+/*}*/
+
+/*.products .box-container .box .btn {*/
+/*    font-family: "Poppins", sans-serif;*/
+/*    font-weight: 500;*/
+/*    font-size: 12px;*/
+/*    letter-spacing: 1px;*/
+/*    display: inline-block;*/
+/*    padding: 12px 32px;*/
+/*    transition: 0.3s;*/
+/*    line-height: 2px;*/
+/*    color: #6bc7d0;*/
+/*    -webkit-animation-delay: 0.8s;*/
+/*    animation-delay: 0.8s;*/
+/*    border: 2px solid #6bc7d0;*/
+/*    border-radius: 5px;*/
+/*}*/
+
+/*.products .box-container .box .btn:hover {*/
+/*    background: #6bc7d0;*/
+/*    color: #fff;*/
+/*    text-decoration: none;*/
+/*}*/

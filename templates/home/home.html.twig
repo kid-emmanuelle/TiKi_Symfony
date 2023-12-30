@@ -295,20 +295,24 @@
                             epics to thought-provoking contemporary narratives, ensuring something captivating for every
                             reader.</p>
                     </div>
-                    <div class="box-container">
+                    <div class="box-container" data-aos="zoom-in" data-aos-delay="200">
                         {% for i in 0..7 %}
-                            <form action="" method="post" class="box" data-aos="zoom-in" data-aos-delay="200">
-                                <img class="image" src="{{ books[i].images[0].link }}"
-                                     data-link="{{ books[i].images[0].link|raw }}" alt="">
+                            <form id="addToCartForm{{ books[i].id }}" action="/addToCart" method="post" role="form" class="box addToCartForm">
+                                <a href="/book/{{ books[i].id }}">
+                                    <img class="image" src="{{ books[i].images[0].link }}" data-link="{{ books[i].images[0].link|raw }}" alt="">
+                                </a>
                                 <div class="name">{{ books[i].title }}</div>
                                 <div class="price">${{ books[i].price }}/-</div>
-                                <input type="number" min="1" name="productt_quantity" value="1" class="qty">
-                                <input type="submit" value="Add to cart" name="add_to_cart" class="btn">
+                                <input type="hidden" name="bookId" value="{{ books[i].id }}">
+                                <input type="number" min="1" name="product_quantity" value="1" class="qty">
+                                <div id="successMessage{{ books[i].id }}" class="successMessage" style="display: none; color: green;"></div>
+                                <div id="errorMessage{{ books[i].id }}" class="errorMessage" style="display: none; color: red;"></div>
+                                <button type="submit" class="btn">Add to cart</button>
                             </form>
                         {% endfor %}
                     </div>
                 </div>
-                <a href="#" class="btn-learn-more">Learn More</a>
+                <a href="/search" class="btn-learn-more">Learn More</a>
             </div>
         </section><!-- End Latest Products Section -->
 
@@ -411,7 +415,7 @@
                         <div class="box">
                             <h3>{{ books[0].title }}</h3>
                             <h4><sup>$</sup>{{ books[0].price }}<span>per one</span></h4>
-                            <div class="image">
+                            <div class="image" >
                                 <img src="{{ books[0].images[0].link }}" data-link="{{ books[0].images[0].link|raw }}"
                                      alt="">
                             </div>

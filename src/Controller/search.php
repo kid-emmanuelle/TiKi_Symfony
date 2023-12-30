@@ -6,21 +6,24 @@
  */
 
 use Entity\Book;
-//use Entity\User;
 use Symfony\Component\HttpFoundation\Response;
 
-//$bookRepository = $entityManager->getRepository(Book::class);
-//$books = $bookRepository->findAll();
-//$userRepository = $entityManager->getRepository(User::class);
-//$users = $userRepository->findAll();
-//$bookRepository = $entityManager->getRepository(Book::class);
-//
-//$criteria = array('title' => 'Yellowface');
-//
-//$books = $bookRepository->findBy($criteria);
+// Calculate the rows numbers
+$bookIdsCookie = $_COOKIE['bookId'] ?? '';
+$bookIdsArray = explode(',', $bookIdsCookie);
+$cartBooks = [];
+foreach ($bookIdsArray as $bookId) {
+    $bookRepository = $entityManager->getRepository(Book::class);
+    $criteria = array('id' => $bookId);
+    $book = $bookRepository->findOneBy($criteria);
+    if ($book) {
+        $cartBooks[] = $book;
+    }
+}
+// Get user to load cart page
+$username = $_COOKIE['userName'] ?? 'user';
 
-use Symfony\Component\Cache\Adapter\FilesystemAdapter;
-
+// Manage submission search
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $searchItem = (string)($_POST['search'] ?? '');
     // get Repository of Book
@@ -33,7 +36,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ->getQuery();
     $books = $query->getResult();
 
-    return new Response($twig->render('home/search.html.twig', ['books' => $books, 'cart_rows_numbers' => 0]));
+    return new Response($twig->render('home/search.html.twig', ['books' => $books, 'user' => $username, 'cart_rows_numbers' => count($cartBooks)]));
 } else {
-    return new Response($twig->render('home/search.html.twig', ['books' => null, 'cart_rows_numbers' => 0]));
+    $bookRepository = $entityManager->getRepository(Book::class);
+    $books = $bookRepository->findAll();
+    return new Response($twig->render('home/search.html.twig', ['books' => $books, 'user' => $username, 'cart_rows_numbers' => count($cartBooks)]));
 }

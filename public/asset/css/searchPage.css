@@ -221,3 +221,25 @@
     font-size: 25px;
     color: rgb(123, 133, 132);
 }
+
+/*.searchResults #errorMessage {*/
+/*    display: none;*/
+/*    color: #fff;*/
+/*    background: #ed3c0d;*/
+/*    text-align: left;*/
+/*    padding: 15px;*/
+/*    font-weight: 600;*/
+/*}*/
+
+/*.searchResults #error-message br+br {*/
+/*    margin-top: 25px;*/
+/*}*/
+
+/*.searchResults #successMessage {*/
+/*    display: none;*/
+/*    color: #fff;*/
+/*    background: #18d26e;*/
+/*    text-align: center;*/
+/*    padding: 15px;*/
+/*    font-weight: 600;*/
+/*}*/

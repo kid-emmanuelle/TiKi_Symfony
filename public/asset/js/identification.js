@@ -51,6 +51,9 @@ function submitLoginForm() {
             if (response.success) {
                 // Update loginButton in navbar
                 alert("Login successful!");
+                let userName = username.split('@')[1].split('.')[0];
+                setCookie('loggedIn', 'true', 1); // 'loggedIn' set to 'true' with an expiration of 1 day
+                setCookie('userName', userName, 1); // 'userName' set to 'JohnDoe' with an expiration of 1 day
                 window.location.href = '/';
             } else {
                 if(response.code === 1){
