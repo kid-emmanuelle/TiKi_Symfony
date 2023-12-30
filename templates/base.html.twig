@@ -56,5 +56,50 @@
         {{ include('footer.html.twig') }}
         <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
         <div id="preloader"></div>
+
+        <script>
+            /**
+             * Check login status
+             */
+            // Function to update the login button
+            function updateButton(userLoggedIn, userName) {
+                var loginButton = document.getElementById("loginButton");
+                console.log(loginButton);
+                console.log(loginButton.textContent);
+
+                if (userLoggedIn) {
+                    loginButton.textContent = userName;
+                    loginButton.href = "#"; // Update this with the user's profile or logout link
+                    setCookie('loggedIn', 'true', 1); // 'loggedIn' set to 'true' with an expiration of 1 day
+                    setCookie('userName', userName, 1); // 'userName' set to 'JohnDoe' with an expiration of 1 day
+                } else {
+                    loginButton.textContent = "Log in";
+                    loginButton.href = "/login"; // Link to the login page
+                }
+            }
+
+            function getCookie(name) {
+                var nameEQ = name + "=";
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i];
+                    while (cookie.charAt(0) === ' ') {
+                        cookie = cookie.substring(1, cookie.length);
+                    }
+                    if (cookie.indexOf(nameEQ) === 0) {
+                        return cookie.substring(nameEQ.length, cookie.length);
+                    }
+                }
+                return null;
+            }
+            var isLoggedIn = getCookie('loggedIn');
+            var userName = getCookie('userName');
+            // console.log(isLoggedIn, userName); // Check these values in the console
+
+            // Check local storage on page load
+            document.addEventListener("DOMContentLoaded", function() {
+                updateButton(isLoggedIn, userName);
+            });
+        </script>
     </body>
 </html>

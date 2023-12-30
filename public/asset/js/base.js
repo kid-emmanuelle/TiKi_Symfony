@@ -251,6 +251,9 @@
         });
     });
 
+    /**
+     * Manage the message of contact form with ajax
+     */
     $(document).ready(function () {
         $('.php-email-form').submit(function (e) {
             e.preventDefault();

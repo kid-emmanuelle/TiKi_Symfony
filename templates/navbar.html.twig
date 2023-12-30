@@ -30,11 +30,7 @@
                     </a>
                 </li>
                 <li><a class="nav-link scrollto" href="#"><i class="bi bi-search" style="font-size: 22px"></i></a></li>
-                {% if is_logged_in %}
-                    <li><a class="scrollto" href="/profile">{{ user_name }}</a></li>
-                {% else %}
-                    <li><a class="login scrollto" href="/login">Log in</a></li>
-                {% endif %}
+                <li><a class="login scrollto" id="loginButton" href="/login">Log in</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>

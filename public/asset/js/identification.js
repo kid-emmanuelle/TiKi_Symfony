@@ -18,19 +18,38 @@
 //     })
 // })()
 
-// Function to update login button text based on user status
+/**
+ * Function to update login button text based on user status
+ */
 function updateLoginButton(userLoggedIn, userName) {
     var loginButton = document.getElementById("loginButton");
 
     if (userLoggedIn) {
         loginButton.textContent = userName;
         loginButton.href = "#"; // Update this with the user's profile or logout link
+        setCookie('loggedIn', 'true', 1); // 'loggedIn' set to 'true' with an expiration of 1 day
+        setCookie('userName', userName, 1); // 'userName' set to 'JohnDoe' with an expiration of 1 day
     } else {
         loginButton.textContent = "Log in";
         loginButton.href = "/login"; // Link to the login page
     }
 }
+/**
+ * Function set cookie of user status of a session
+ */
+function setCookie(name, value, days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + value + expires + "; path=/";
+}
 
+/**
+ * Function manage the message of login form
+ */
 function submitLoginForm() {
     var username = $('#email').val();
     var password = $('#password').val();
@@ -45,9 +64,11 @@ function submitLoginForm() {
         data: { username: username, password: password },
         success: function(response) {
             if (response.success) {
-                // window.location.href = '/';
-                // Reload the page to reflect login changes or perform another AJAX call
-                location.reload();
+                // Update loginButton in navbar
+                let userName = username.split('@')[1].split('.')[0];
+                updateLoginButton(true, userName);
+                alert("Login successful!");
+                window.location.href = '/';
             } else {
                 if(response.code === 1){
                     document.getElementById("email").classList.add('is-invalid');
@@ -69,6 +90,9 @@ function submitLoginForm() {
     });
 }
 
+/**
+ * Function manage the message of register form
+ */
 function submitRegisterForm() {
     var email = $('#email').val();
     var firstname = $('#firstname').val();
@@ -88,7 +112,7 @@ function submitRegisterForm() {
         data: { email: email, firstname: firstname, lastname: lastname, password: password },
         success: function(response) {
             if (response.success) {
-                window.location.href = '/';
+                window.location.href = '/login';
             } else {
                 if (response.errors.mail){
                     $('#email-invalid').html(response.errors.mail[0]);
