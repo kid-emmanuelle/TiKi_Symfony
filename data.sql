@@ -28,9 +28,9 @@ INSERT INTO book(id, title, description, price, format) VALUES (20, 'The Marriag
 -- User, password: 1234
 INSERT INTO user(id, name, firstname, mail, password) VALUES(1,'Attali','Jacques','jacques.attali@gmail.com','$2y$10$mVjS8BM2AYOED88WsbwMsuZ6.aqWnqqRhWD3g5PlCGKGxZ8d2cH.i');
 INSERT INTO user(id, name, firstname, mail, password) VALUES(2,'J.K Rowling','Joanne','joanne.rowling@gmail.com','$2y$10$mVjS8BM2AYOED88WsbwMsuZ6.aqWnqqRhWD3g5PlCGKGxZ8d2cH.i');
-INSERT INTO user(id, name, firstname, mail, password) VALUES(3,'Lop','Tsechi','Tsechi.Lop@gmail.com','$2y$10$mVjS8BM2AYOED88WsbwMsuZ6.aqWnqqRhWD3g5PlCGKGxZ8d2cH.i');
-INSERT INTO user(id, name, firstname, mail, password) VALUES(4,'Bidden','Joe','joe.bidden@gmail.com','$2y$10$mVjS8BM2AYOED88WsbwMsuZ6.aqWnqqRhWD3g5PlCGKGxZ8d2cH.i');
-INSERT INTO user(id, name, firstname, mail, password) VALUES(5,'Salman','Ben','ben.salman@gmail.com','$2y$10$mVjS8BM2AYOED88WsbwMsuZ6.aqWnqqRhWD3g5PlCGKGxZ8d2cH.i');
+INSERT INTO user(id, name, firstname, mail, password) VALUES(3,'Hugo','Victor','victor.hugo@gmail.com','$2y$10$mVjS8BM2AYOED88WsbwMsuZ6.aqWnqqRhWD3g5PlCGKGxZ8d2cH.i');
+INSERT INTO user(id, name, firstname, mail, password) VALUES(4,'Camus','Albert','albert.camus@gmail.com','$2y$10$mVjS8BM2AYOED88WsbwMsuZ6.aqWnqqRhWD3g5PlCGKGxZ8d2cH.i');
+INSERT INTO user(id, name, firstname, mail, password) VALUES(5,'agatha','christie ','christie.agatha@gmail.com','$2y$10$mVjS8BM2AYOED88WsbwMsuZ6.aqWnqqRhWD3g5PlCGKGxZ8d2cH.i');
 
 -- Review
 INSERT INTO review(id, user_id, book_id, text, star) VALUES(1,1,1,'Thank you to the publishers for this early review copy. I knew straight away this was going to appeal to me but I admit like too many other books it had hu.',5);

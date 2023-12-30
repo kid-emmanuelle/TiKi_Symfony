@@ -27,7 +27,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }else if (password_verify($password, $user->getPassword())) {
         $response = array('success' => true, 'message' => 'Identification reussie', 'code' => 0, 'user' => $user);
         $_SESSION['user_id'] = $user->getId();
-        $_SESSION['test'] = $user->getName();
         // Set session variables for Twig
         $_SESSION['is_logged_in'] = true; // Set a flag for logged-in status
         $_SESSION['user_name'] = $user->getName(); // Set the user's name

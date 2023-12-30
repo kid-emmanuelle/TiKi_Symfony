@@ -67,15 +67,6 @@
                 console.log(loginButton);
                 console.log(loginButton.textContent);
 
-                if (userLoggedIn) {
-                    loginButton.textContent = userName;
-                    loginButton.href = "#"; // Update this with the user's profile or logout link
-                    setCookie('loggedIn', 'true', 1); // 'loggedIn' set to 'true' with an expiration of 1 day
-                    setCookie('userName', userName, 1); // 'userName' set to 'JohnDoe' with an expiration of 1 day
-                } else {
-                    loginButton.textContent = "Log in";
-                    loginButton.href = "/login"; // Link to the login page
-                }
             }
 
             function getCookie(name) {

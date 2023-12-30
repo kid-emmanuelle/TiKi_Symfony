@@ -14,4 +14,11 @@ $books = $bookRepository->findAll();
 $userRepository = $entityManager->getRepository(User::class);
 $users = $userRepository->findAll();
 
-return new Response($twig->render('home/home.html.twig', ['books' => $books, 'users' => $users, 'cart_rows_numbers' => 0]));
+session_start();
+if(isset($_SESSION['user_name'])){
+    $name = $_SESSION['user_name'];
+}else{
+    $name = "Log in";
+}
+
+return new Response($twig->render('home/home.html.twig', ['books' => $books, 'users' => $users, 'cart_rows_numbers' => 0, "name" => $name]));

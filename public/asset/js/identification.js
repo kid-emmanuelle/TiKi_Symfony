@@ -18,22 +18,7 @@
 //     })
 // })()
 
-/**
- * Function to update login button text based on user status
- */
-function updateLoginButton(userLoggedIn, userName) {
-    var loginButton = document.getElementById("loginButton");
 
-    if (userLoggedIn) {
-        loginButton.textContent = userName;
-        loginButton.href = "#"; // Update this with the user's profile or logout link
-        setCookie('loggedIn', 'true', 1); // 'loggedIn' set to 'true' with an expiration of 1 day
-        setCookie('userName', userName, 1); // 'userName' set to 'JohnDoe' with an expiration of 1 day
-    } else {
-        loginButton.textContent = "Log in";
-        loginButton.href = "/login"; // Link to the login page
-    }
-}
 /**
  * Function set cookie of user status of a session
  */
@@ -65,8 +50,6 @@ function submitLoginForm() {
         success: function(response) {
             if (response.success) {
                 // Update loginButton in navbar
-                let userName = username.split('@')[1].split('.')[0];
-                updateLoginButton(true, userName);
                 alert("Login successful!");
                 window.location.href = '/';
             } else {

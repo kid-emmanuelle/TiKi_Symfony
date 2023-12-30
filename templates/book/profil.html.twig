@@ -36,14 +36,19 @@
                 <h3>Synopsis</h3>
                 <p>{{ book.description }}</p>
                 <h3>{{ book.price }}€</h3>
+                <button type="button" class="btn btn-primary">Add to cart</button>
             </div>
-        </div>
-        <div id="button-section" class="rounded bg-cyan">
-            <button type="button" class="btn btn-primary">Write a review</button>
-            <button type="button" class="btn btn-primary">Add to basket</button>
         </div>
         <hr>
         <div id="reviews">
+            <div class="collapse" id="collapseExample">
+                <div class="input-group mb-3">
+                    <label for="customRange2" class="form-label">Give a rating from 1 to 5</label>
+                    <input type="range" class="form-range" min="1" max="5" id="star">
+                    <input id="reviewText" type="text" class="form-control" placeholder="Write your review" aria-label="Write your review">
+                    <button class="btn btn-outline-secondary" type="button" id="postbutton" onclick="submitReview(this)">Post</button>
+                </div>
+            </div>
             <h1>Customer Reviews:</h1>
             {% for review in book.reviews %}
                 {% if loop.first %}
@@ -69,23 +74,29 @@
         {% if( recommandations|length > 0 ) %}
             <hr>
 
-            <h1>You may also like...</h1>
-        <div class="row">
-            {% for recommandation in recommandations %}
-            <div class="col-sm-2 mb-3 mb-sm-0">
+        <section id="pricing" class="pricing">
+            <div class="container" data-aos="fade-up">
+                <div class="section-title">
+                    <h2>You may also like...</h2>
+                </div>
 
-                <a href="/book/{{ recommandation.id }}">
-                <div class="card" style="width: 18rem;">
-                    <img src="{{ (recommandation.images|first).link }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text bold">{{ (recommandation.title) }}</p>
+                <div class="row">
+            {% for recommandation in recommandations %}
+                <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
+                    <div class="box">
+                        <h3>{{ recommandation.title }}</h3>
+                        <h4><sup>$</sup>{{ recommandation.price }}<span>per one</span></h4>
+                        <div class="image">
+                            <img src="{{ recommandation.images[0].link }}" data-link="{{ recommandation.images[0].link|raw }}" alt="">
+                        </div>
+                        <a href="/book/{{ recommandation.id }}" class="buy-btn">Discover It</a>
                     </div>
                 </div>
-                </a>
-            </div>
 
             {% endfor %}
-        </div>
+                </div>
+            </div>
+    </section>
 
         {% endif %}
 
