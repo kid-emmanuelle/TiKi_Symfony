@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Search{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="/asset/css/searchPage.css" rel="stylesheet">
+    <link href="" rel="stylesheet">
+{% endblock %}
+
+{% block javascripts %}
+    <script defer src="/asset/js/innerpage.js"></script>
+{% endblock %}
+
+{% block content %}
+    {#============= Breadcrumbs Section =============#}
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <ol>
+                <li><a href="/">Home</a></li>
+                <li>Search Books</li>
+            </ol>
+            <h2>Search Books</h2>
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="inner-page">
+        <div class="container justify-content-center search-form">
+            <form action="/search" method="post" role="form" class="searchForm">
+                <input type="text" name="search" placeholder="Search books..." class="box" id="search">
+                <button type="submit" name="submit" value="search" class="btn">Search</button>
+            </form>
+        </div>
+
+        {% if books %}
+            <div class="container justify-content-center products " data-aos="fade-up">
+                <div class="box-container" id="searchResults">
+
+                        {% for book in books %}
+                            <form action="" method="post" class="box" data-aos="zoom-in" data-aos-delay="200">
+                                <img class="image" src="{{ book.images[0].link }}" data-link="{{ book.images[0].link|raw }}" alt="">
+                                <div class="name">{{ book.title }}</div>
+                                <div class="price">${{ book.price }}/-</div>
+                                <input type="number" min="1" name="product_quantity" value="1" class="qty">
+                                <input type="submit" value="Add to cart" name="add_to_cart" class="btn">
+                            </form>
+                        {% endfor %}
+                </div>
+            </div>
+        {% else %}
+            <div class="no-result"><i class="bi-x-circle"></i>&nbsp;<p class="empty">No results found!</p></div>
+        {% endif %}
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="/asset/js/search.js"></script>
+
+{% endblock %}
