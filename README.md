@@ -2,7 +2,7 @@
 ## Comment lancer l'application
 
 - Après avoir `pull` le projet de github, téléchargez immédiatement tous les compositeurs dans le fichier `composer.json`
-- Vérifiez ensuite si la base de données n'existe pas, définissez sa source de données sur le fichier db.sqlite et téléchargez le pilote sqlite.
+- Vérifiez ensuite si la base de données n'existe pas, définissez sa source de données sur le fichier `db.sqlite` et téléchargez le driver de sqlite.
 - Ouvrez ensuite le terminal et exécutez la commande pour installer Docker, lancez votre projet:
 
   `docker-compose up -d --build`
