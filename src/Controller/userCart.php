@@ -23,5 +23,7 @@ foreach ($bookIdsArray as $bookId) {
         $totalPrice += $book->getPrice();
     }
 }
+// Get username and pass it into user
+$username = $_COOKIE['userName'] ?? 'user';
 
-return new Response($twig->render('home/cart.html.twig', ['books' => $books, 'cart_rows_numbers' => count($books), 'totalPrice' => $totalPrice]));
+return new Response($twig->render('home/cart.html.twig', ['books' => $books, 'user' => $username, 'cart_rows_numbers' => count($books), 'totalPrice' => $totalPrice]));
