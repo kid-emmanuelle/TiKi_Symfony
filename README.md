@@ -22,6 +22,11 @@ Ensuite vous pouvez exectuer le fichier `data.sql` sur la base de données afin 
 ## Les spécificités de votre projet 
 
 Sur le site vous pouvez parcourir les différentes pages en cliquant sur la barre de navigation en haut du site web, vous pouvez également vous inscrire et vous connecter
+- Cliquez sur `Watch Video` pour regarder un vidéo d'un book store dans un pop-up.
+- Parcourez lentement du haut vers le bas de la page avec votre souris pour voir toutes les animations du site.
+- Cliquez sur les éléments de la barre de navigation pour accéder à différentes sections.
+- Vous pouvez cliquer sur le button `Add to cart` sur chaque livre, puis cliquer sur le panier `Cart` pour voir tous les livres que vous avez ajoutés.
+- Explorez la fonction de recherche en cliquant sur le logo de recherche dans la barre de navigation (entrez les caractères avec lesquels vous souhaitez trouver le titre du livre correspondant, par exemple : `on`, `k`, `l`, `good`, etc...)
 
 ## Quelques images du site web
 ![image](https://github.com/eccedentesiast-kid/TiKi_Symfony/assets/91082621/a127a84a-c275-4825-bec5-f8647415902c)
